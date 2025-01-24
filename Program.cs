@@ -6,7 +6,8 @@ LinqQueries queries = new();
 // ShowBooks(queries.booksAfter2000());
 // ShowBooks(queries.booksWithMoreThan250PagesAndInActionWords());
 // Console.WriteLine($"All books have status: {queries.allBooksHasStatus()}");
-Console.WriteLine($"Some book was published in 2005: {queries.someBookWasPublishedIn2005()}");
+// Console.WriteLine($"Some book was published in 2005: {queries.someBookWasPublishedIn2005()}");
+ShowBooks(queries.pythonBooks());
 
 void ShowBooks(IEnumerable<Book> books)
 {

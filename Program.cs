@@ -2,9 +2,14 @@
 
 LinqQueries queries = new();
 
-ShowBooks(queries.AllBooks());
+// ShowBooks(queries.AllBooks());
+// ShowBooks(queries.booksAfter2000());
+// ShowBooks(queries.booksWithMoreThan250PagesAndInActionWords());
+// Console.WriteLine($"All books have status: {queries.allBooksHasStatus()}");
+Console.WriteLine($"Some book was published in 2005: {queries.someBookWasPublishedIn2005()}");
 
-void ShowBooks(IEnumerable<Book> books) {
+void ShowBooks(IEnumerable<Book> books)
+{
   // {0, -70} -> 0: Title, -70: 70 espacios a la izquierda
   // {1, 7} -> 1: Pages, 7: 7 espacios a la derecha
   // {2, 15} -> 2: Status, 15: 15 espacios a la derecha

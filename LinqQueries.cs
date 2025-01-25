@@ -85,4 +85,30 @@ public class LinqQueries
     //   where book.Categories.Contains("Python")
     //   select book;
   }
+
+  public IEnumerable<Book> javaBooksByNameAsc()
+  {
+    // extension method
+    return bookCollection.Where(book => book.Categories.Contains("Java")).OrderBy(book => book.Title);
+
+    // query expression
+    // return
+    //   from book in bookCollection
+    //   where book.Categories.Contains("Java")
+    //   orderby book.Title
+    //   select book;
+  }
+
+  public IEnumerable<Book> booksWithMoreThan450PagesByDescending()
+  {
+    // extension method
+    return bookCollection.Where(book => book.PageCount > 450).OrderByDescending(book => book.PageCount);
+
+    // query expression
+    // return
+    //   from book in bookCollection
+    //   where book.PageCount > 450
+    //   orderby book.PageCount descending
+    //   select book;
+  }
 }

@@ -9,7 +9,9 @@ LinqQueries queries = new();
 // Console.WriteLine($"Some book was published in 2005: {queries.someBookWasPublishedIn2005()}");
 // ShowBooks(queries.pythonBooks());
 // ShowBooks(queries.javaBooksByNameAsc());
-ShowBooks(queries.booksWithMoreThan450PagesByDescending());
+// ShowBooks(queries.booksWithMoreThan450PagesByDescending());
+// ShowBooks(queries.threeFirstJavaBooksOrderedByDate());
+ShowBooks(queries.booksWithMoreThan450PagesByDescendingAndTakeThirdAndFourth());
 
 void ShowBooks(IEnumerable<Book> books)
 {

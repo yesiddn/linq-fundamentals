@@ -111,4 +111,26 @@ public class LinqQueries
     //   orderby book.PageCount descending
     //   select book;
   }
+
+  public IEnumerable<Book> threeFirstJavaBooksOrderedByDate()
+  {
+    // extension method
+    return bookCollection
+    .Where(book => book.Categories.Contains("Java"))
+    .OrderByDescending(book => book.PublishedDate)
+    // .TakeLast(3) // es lo contrario a Take, toma los últimos 3 elementos
+    // .TakeWhile(book => book.PublishedDate.Year > 2000) // toma elementos mientras se cumpla la condición
+    .Take(3);
+  }
+
+  public IEnumerable<Book> booksWithMoreThan450PagesByDescendingAndTakeThirdAndFourth() {
+    // extension method
+    return bookCollection
+    .Where(book => book.PageCount > 450)
+    .OrderByDescending(book => book.PageCount)
+    .Take(4)
+    .Skip(2);
+    // .SkipLast(2) // es lo contrario a Skip, salta los últimos 2 elementos
+    // .SkipWhile(book => book.PageCount > 500) // salta elementos mientras se cumpla la condición
+  }
 }

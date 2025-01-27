@@ -133,4 +133,10 @@ public class LinqQueries
     // .SkipLast(2) // es lo contrario a Skip, salta los últimos 2 elementos
     // .SkipWhile(book => book.PageCount > 500) // salta elementos mientras se cumpla la condición
   }
+
+  public IEnumerable<Book> threeFirstBooks() {
+    return bookCollection.Take(3)
+    // .Select(book => new { book.Title, PCount = book.PageCount }); // con esto se crea un objeto anónimo con los campos seleccionados -> se comporta como los objetos de JavaScript, cuando no se especifica el nombre de la propiedad se toma el nombre de la variable
+    .Select(book => new Book() { Title = book.Title, PageCount = book.PageCount });
+  }
 }

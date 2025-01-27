@@ -11,7 +11,8 @@ LinqQueries queries = new();
 // ShowBooks(queries.javaBooksByNameAsc());
 // ShowBooks(queries.booksWithMoreThan450PagesByDescending());
 // ShowBooks(queries.threeFirstJavaBooksOrderedByDate());
-ShowBooks(queries.booksWithMoreThan450PagesByDescendingAndTakeThirdAndFourth());
+// ShowBooks(queries.booksWithMoreThan450PagesByDescendingAndTakeThirdAndFourth());
+ShowBooks(queries.threeFirstBooks());
 
 void ShowBooks(IEnumerable<Book> books)
 {

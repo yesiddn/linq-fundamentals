@@ -12,7 +12,8 @@ LinqQueries queries = new();
 // ShowBooks(queries.booksWithMoreThan450PagesByDescending());
 // ShowBooks(queries.threeFirstJavaBooksOrderedByDate());
 // ShowBooks(queries.booksWithMoreThan450PagesByDescendingAndTakeThirdAndFourth());
-ShowBooks(queries.threeFirstBooks());
+// ShowBooks(queries.threeFirstBooks());
+Console.WriteLine($"There are {queries.countOfBooksBetween200and500Pages()} books between 200 and 500 pages");
 
 void ShowBooks(IEnumerable<Book> books)
 {

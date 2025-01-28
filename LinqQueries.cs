@@ -139,4 +139,13 @@ public class LinqQueries
     // .Select(book => new { book.Title, PCount = book.PageCount }); // con esto se crea un objeto anónimo con los campos seleccionados -> se comporta como los objetos de JavaScript, cuando no se especifica el nombre de la propiedad se toma el nombre de la variable
     .Select(book => new Book() { Title = book.Title, PageCount = book.PageCount });
   }
+
+  public int countOfBooksBetween200and500Pages() {
+    return bookCollection.Count(book => book.PageCount >= 200 && book.PageCount <= 500);
+    // return bookCollection
+    // .Where(book => book.PageCount >= 200 && book.PageCount <= 500) 
+    // .Count();
+    // .LongCount(); // retorna un long en lugar de un int
+    // esto es una mala practica, ya que se estan haciendo dos operaciones sobre la colección, lo ideal es usar Count (o LongCount) directamente ya que permite recibir una expresión lambda como parámetro
+  }
 }

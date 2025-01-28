@@ -149,15 +149,23 @@ public class LinqQueries
     // esto es una mala practica, ya que se estan haciendo dos operaciones sobre la colección, lo ideal es usar Count (o LongCount) directamente ya que permite recibir una expresión lambda como parámetro
   }
 
-  public DateTime bookWithTheLatestPublishedDate() {
+  public DateTime latestPublishedDate() {
     return bookCollection.Min(book => book.PublishedDate);
   }
 
-  public DateTime bookWithTheEarliestPublishedDate() {
+  public DateTime earliestPublishedDate() {
     return bookCollection.Max(book => book.PublishedDate);
   }
 
   public int bookWithTheMostPages() {
     return bookCollection.Max(book => book.PageCount);
+  }
+
+  public Book bookWithTheFewestPages() {
+    return bookCollection.Where(book => book.PageCount > 0).MinBy(book => book.PageCount) ?? new Book();
+  }
+
+  public Book bookWithTheEarliestPublishedDate() {
+    return bookCollection.Where(book => book.PublishedDate != DateTime.MinValue).MaxBy(book => book.PublishedDate) ?? new Book();
   }
 }

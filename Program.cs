@@ -16,7 +16,11 @@ LinqQueries queries = new();
 // Console.WriteLine($"There are {queries.countOfBooksBetween200and500Pages()} books between 200 and 500 pages");
 // Console.WriteLine($"The latest publication date is: {queries.bookWithTheLatestPublishedDate()}");
 // Console.WriteLine($"The earliest publication date is: {queries.bookWithTheEarliestPublishedDate()}");
-Console.WriteLine($"The largest number of pages is: {queries.bookWithTheMostPages()}");
+// Console.WriteLine($"The largest number of pages is: {queries.bookWithTheMostPages()}");
+// Book bookWithTheSmallestNumberOfPages = queries.bookWithTheFewestPages();
+// Console.WriteLine($"The book with the smallest number of pages is: {bookWithTheSmallestNumberOfPages.Title} with {bookWithTheSmallestNumberOfPages.PageCount} pages");
+Book bookWithTheEarliestPublishedDate = queries.bookWithTheEarliestPublishedDate();
+Console.WriteLine($"The book with the earliest published date is: {bookWithTheEarliestPublishedDate.Title} published on {bookWithTheEarliestPublishedDate.PublishedDate.ToShortDateString()}");
 
 void ShowBooks(IEnumerable<Book> books)
 {

@@ -148,4 +148,16 @@ public class LinqQueries
     // .LongCount(); // retorna un long en lugar de un int
     // esto es una mala practica, ya que se estan haciendo dos operaciones sobre la colección, lo ideal es usar Count (o LongCount) directamente ya que permite recibir una expresión lambda como parámetro
   }
+
+  public DateTime bookWithTheLatestPublishedDate() {
+    return bookCollection.Min(book => book.PublishedDate);
+  }
+
+  public DateTime bookWithTheEarliestPublishedDate() {
+    return bookCollection.Max(book => book.PublishedDate);
+  }
+
+  public int bookWithTheMostPages() {
+    return bookCollection.Max(book => book.PageCount);
+  }
 }

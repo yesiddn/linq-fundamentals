@@ -13,7 +13,10 @@ LinqQueries queries = new();
 // ShowBooks(queries.threeFirstJavaBooksOrderedByDate());
 // ShowBooks(queries.booksWithMoreThan450PagesByDescendingAndTakeThirdAndFourth());
 // ShowBooks(queries.threeFirstBooks());
-Console.WriteLine($"There are {queries.countOfBooksBetween200and500Pages()} books between 200 and 500 pages");
+// Console.WriteLine($"There are {queries.countOfBooksBetween200and500Pages()} books between 200 and 500 pages");
+// Console.WriteLine($"The latest publication date is: {queries.bookWithTheLatestPublishedDate()}");
+// Console.WriteLine($"The earliest publication date is: {queries.bookWithTheEarliestPublishedDate()}");
+Console.WriteLine($"The largest number of pages is: {queries.bookWithTheMostPages()}");
 
 void ShowBooks(IEnumerable<Book> books)
 {

@@ -168,4 +168,17 @@ public class LinqQueries
   public Book bookWithTheEarliestPublishedDate() {
     return bookCollection.Where(book => book.PublishedDate != DateTime.MinValue).MaxBy(book => book.PublishedDate) ?? new Book();
   }
+
+  public int sumOfPagesBetween0and500() {
+    return bookCollection
+    .Where(book => book.PageCount >= 0 && book.PageCount <= 500)
+    .Sum(book => book.PageCount);
+  }
+
+  public string bookTitlesAfter2015() {
+    return bookCollection
+    .Where(book => book.PublishedDate.Year >= 2015)
+    // .Aggregate("", (acc, book) => acc + book.Title + ", ");
+    .Aggregate("", (bookTitles, next) => bookTitles + next.Title + ", "); // por lo general se llama al next para indicar el siguiente elemento de la colección
+  }
 }

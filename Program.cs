@@ -19,8 +19,10 @@ LinqQueries queries = new();
 // Console.WriteLine($"The largest number of pages is: {queries.bookWithTheMostPages()}");
 // Book bookWithTheSmallestNumberOfPages = queries.bookWithTheFewestPages();
 // Console.WriteLine($"The book with the smallest number of pages is: {bookWithTheSmallestNumberOfPages.Title} with {bookWithTheSmallestNumberOfPages.PageCount} pages");
-Book bookWithTheEarliestPublishedDate = queries.bookWithTheEarliestPublishedDate();
-Console.WriteLine($"The book with the earliest published date is: {bookWithTheEarliestPublishedDate.Title} published on {bookWithTheEarliestPublishedDate.PublishedDate.ToShortDateString()}");
+// Book bookWithTheEarliestPublishedDate = queries.bookWithTheEarliestPublishedDate();
+// Console.WriteLine($"The book with the earliest published date is: {bookWithTheEarliestPublishedDate.Title} published on {bookWithTheEarliestPublishedDate.PublishedDate.ToShortDateString()}");
+Console.WriteLine($"Sum of all pages: {queries.sumOfPagesBetween0and500()}");
+Console.WriteLine($"Book titles published after 2015: {queries.bookTitlesAfter2015()}");
 
 void ShowBooks(IEnumerable<Book> books)
 {

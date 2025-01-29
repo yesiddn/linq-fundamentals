@@ -23,7 +23,9 @@ LinqQueries queries = new();
 // Console.WriteLine($"The book with the earliest published date is: {bookWithTheEarliestPublishedDate.Title} published on {bookWithTheEarliestPublishedDate.PublishedDate.ToShortDateString()}");
 // Console.WriteLine($"Sum of all pages: {queries.sumOfPagesBetween0and500()}");
 // Console.WriteLine($"Book titles published after 2015: {queries.bookTitlesAfter2015()}");
-Console.WriteLine($"Average title characters: {queries.averageTitleCharacters()}");
+// Console.WriteLine($"Average title characters: {queries.averageTitleCharacters()}");
+Console.WriteLine("Books after 2000 grouped by published year:");
+ShowGroup(queries.booksAfter2000GroupedByPublishedYear());
 
 void ShowBooks(IEnumerable<Book> books)
 {
@@ -38,5 +40,19 @@ void ShowBooks(IEnumerable<Book> books)
   {
     // para fechas, si solo se quiere mostrar la fecha se puede usar book.PublishedDate.ToShortDateString()
     Console.WriteLine("{0, -70} {1, 7} {2, 15}", book.Title, book.PageCount, book.PublishedDate.ToShortDateString());
+  }
+}
+
+void ShowGroup(IEnumerable<IGrouping<int, Book>> booksGrouped)
+{
+  foreach (var group in booksGrouped)
+  {
+    Console.WriteLine("");
+    Console.WriteLine($"Grupo: {group.Key}");
+    Console.WriteLine("{0,-60} {1, 15} {2, 15}\n", "Titulo", "N. Paginas", "Fecha publicacion");
+    foreach (var book in group)
+    {
+      Console.WriteLine("{0, -70} {1, 7} {2, 15}", book.Title, book.PageCount, book.PublishedDate.ToShortDateString());
+    }
   }
 }

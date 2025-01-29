@@ -196,4 +196,18 @@ public class LinqQueries
   public ILookup<char, Book> booksDictionaryByFirstLetter() {
     return bookCollection.ToLookup(book => book.Title[0], book => book); // en la primera parte se indica la clave y en la segunda el valor
   }
+
+  public IEnumerable<Book> booksAfter2005AndMoreThan500Pages() {
+    var booksAfter2005 = bookCollection.Where(book => book.PublishedDate.Year > 2005);
+
+    var booksWithMoreThan500Pages = bookCollection.Where(book => book.PageCount > 500);
+
+    return booksAfter2005
+    .Join(
+      booksWithMoreThan500Pages, // colección con la que se va a hacer el join 
+      after2005 => after2005.Title, // campo unico que se va a comparar en la colección principal 
+      moreThan500 => moreThan500.Title, // campo unico que se va a comparar en la colección con la que se va a hacer el join 
+      (after2005, moreThan500) => after2005 // se retorna el objeto que se va a mostrar, no importa si se retorna after2005 o moreThan500 porque son iguales
+    );
+  }
 }

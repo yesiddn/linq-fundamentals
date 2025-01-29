@@ -26,8 +26,10 @@ LinqQueries queries = new();
 // Console.WriteLine($"Average title characters: {queries.averageTitleCharacters()}");
 // Console.WriteLine("Books after 2000 grouped by published year:");
 // ShowGroup(queries.booksAfter2000GroupedByPublishedYear());
-Console.WriteLine("Books filtered by letter (a):");
-printDictionary(queries.booksDictionaryByFirstLetter(), 'a');
+// Console.WriteLine("Books filtered by letter (a):");
+// printDictionary(queries.booksDictionaryByFirstLetter(), 'a');
+Console.WriteLine("Books after 2005 and more than 500 pages (Join):");
+ShowBooks(queries.booksAfter2005AndMoreThan500Pages());
 
 
 void ShowBooks(IEnumerable<Book> books)

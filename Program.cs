@@ -24,8 +24,11 @@ LinqQueries queries = new();
 // Console.WriteLine($"Sum of all pages: {queries.sumOfPagesBetween0and500()}");
 // Console.WriteLine($"Book titles published after 2015: {queries.bookTitlesAfter2015()}");
 // Console.WriteLine($"Average title characters: {queries.averageTitleCharacters()}");
-Console.WriteLine("Books after 2000 grouped by published year:");
-ShowGroup(queries.booksAfter2000GroupedByPublishedYear());
+// Console.WriteLine("Books after 2000 grouped by published year:");
+// ShowGroup(queries.booksAfter2000GroupedByPublishedYear());
+Console.WriteLine("Books filtered by letter (a):");
+printDictionary(queries.booksDictionaryByFirstLetter(), 'a');
+
 
 void ShowBooks(IEnumerable<Book> books)
 {
@@ -51,6 +54,23 @@ void ShowGroup(IEnumerable<IGrouping<int, Book>> booksGrouped)
     Console.WriteLine($"Grupo: {group.Key}");
     Console.WriteLine("{0,-60} {1, 15} {2, 15}\n", "Titulo", "N. Paginas", "Fecha publicacion");
     foreach (var book in group)
+    {
+      Console.WriteLine("{0, -70} {1, 7} {2, 15}", book.Title, book.PageCount, book.PublishedDate.ToShortDateString());
+    }
+  }
+}
+
+void printDictionary(ILookup<char, Book> bookList, char letter)
+{
+  char letterUpper = Char.ToUpper(letter);
+  if (bookList[letterUpper].Count() == 0)
+  {
+    Console.WriteLine($"No hay libros que inicien con la letra '{letterUpper}'");
+  }
+  else
+  {
+    Console.WriteLine("{0,-60} {1, 15} {2, 15}\n", "Título", "Nro. Páginas", "Fecha de Publicación");
+    foreach (var book in bookList[letterUpper])
     {
       Console.WriteLine("{0, -70} {1, 7} {2, 15}", book.Title, book.PageCount, book.PublishedDate.ToShortDateString());
     }

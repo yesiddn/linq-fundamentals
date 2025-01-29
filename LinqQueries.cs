@@ -192,4 +192,8 @@ public class LinqQueries
     .Where(book => book.PublishedDate.Year > 2000)
     .GroupBy(book => book.PublishedDate.Year);
   }
+
+  public ILookup<char, Book> booksDictionaryByFirstLetter() {
+    return bookCollection.ToLookup(book => book.Title[0], book => book); // en la primera parte se indica la clave y en la segunda el valor
+  }
 }

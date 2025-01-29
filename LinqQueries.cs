@@ -181,4 +181,9 @@ public class LinqQueries
     // .Aggregate("", (acc, book) => acc + book.Title + ", ");
     .Aggregate("", (bookTitles, next) => bookTitles + next.Title + ", "); // por lo general se llama al next para indicar el siguiente elemento de la colección
   }
+
+  public double averageTitleCharacters() {
+    return bookCollection
+    .Average(book => book.Title.Length);
+  }
 }
